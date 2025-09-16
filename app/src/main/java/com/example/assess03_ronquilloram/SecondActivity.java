@@ -12,6 +12,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.Calendar;
+
 public class SecondActivity extends AppCompatActivity {
 
     @Override
@@ -27,13 +29,23 @@ public class SecondActivity extends AppCompatActivity {
 
         final Button btnClick1 = findViewById(R.id.button2);
         final TextView textView4 = findViewById(R.id.textView4);
+        final TextView textView5 = findViewById(R.id.textView5);
+
+        Intent intent= getIntent();
 
         btnClick1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SecondActivity.this, MainActivity.class);
-                String str;
-                textView4.setText(str.toString());
+                String str1 = intent.getStringExtra("MY_MESSAGE");
+    
+                String str2 = getIntent().getStringExtra("DOB");
+
+
+
+                int year = Calendar.getInstance().get(Calendar.YEAR);
+                int userAge = year - Integer.parseInt(str2);
+
 
                 startActivity(intent);
             }
